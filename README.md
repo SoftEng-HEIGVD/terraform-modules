@@ -18,7 +18,9 @@ $ tree minimal-module/
 
 ## Documentation
 Each module should have an explicit name, and provide some description in the nested README.md
+With the informations about the input variables and outputs
 
 ## Modules list
-
-`Coming soon`
+ - exo-compute-module : specifies the creation of the `exoscale_compute` resource.
+ - exo-ssh-keypair-private: specifies the creation of the `exoscale_ssh_keypair` without providing the public key.
+ - exo-ssh-keypair-public : specifies to generate an SSH keypair resource the creation of the `exoscale_ssh_keypair` with a given public key.
