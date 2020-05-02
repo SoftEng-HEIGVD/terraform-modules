@@ -13,14 +13,14 @@ resource "exoscale_compute" "instance" {
   zone            = local.zone
   display_name    = var.instance_name
   hostname        = var.instance_name
-  template        =  data.exoscale_compute_template.ubuntu.name
+  template        = data.exoscale_compute_template.ubuntu.name
   size            = var.instance_size
   disk_size       = var.disk_size
   keyboard        = "fr-ch"
   key_pair        = format("%s%s", var.instance_name, "_keypair")
   state           = "Running"
   security_groups = var.security_groups_list
-  ip6 = true
+  ip6             = true
 
   connection {
     type = "ssh"
@@ -36,6 +36,12 @@ resource "exoscale_compute" "instance" {
       "chmod +x wait-for-it.sh",
       "./wait-for-it.sh"
     ]
+  }
+  provisioner "remote-exec" {
+    inline = ["echo ${var.secret_id} > .secret-id"]
+  }
+  provisioner "remote-exec" {
+    inline = ["echo ${var.role_id} > .role-id"]
   }
 }
 
