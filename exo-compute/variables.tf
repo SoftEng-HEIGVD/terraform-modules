@@ -22,7 +22,3 @@ variable "network_id" {
 variable "local_zone" {
   default = "ch-gva-2"
 }
-
-
-variable "secret_id" {}
-variable "role_id" {}

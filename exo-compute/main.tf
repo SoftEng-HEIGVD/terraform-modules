@@ -37,36 +37,9 @@ resource "exoscale_compute" "instance" {
       "./wait-for-it.sh"
     ]
   }
-  provisioner "remote-exec" {
-    inline = ["echo ${var.secret_id} > .secret-id"]
-  }
-  provisioner "remote-exec" {
-    inline = ["echo ${var.role_id} > .role-id"]
-  }
-}
-
-data "template_file" "ansible-hosts-template" {
-  template = file("ansible/hosts.tpl")
-  vars = {
-    ip = exoscale_compute.instance.ip_address
-  }
-  depends_on = [exoscale_compute.instance]
 }
 
 
-resource "local_file" "ansible-hosts-file" {
-  content  = data.template_file.ansible-hosts-template.rendered
-  filename = "ansible/hosts"
-}
-
-resource "null_resource" "ansible" {
-  provisioner "local-exec" {
-    command = "ssh-keyscan ${exoscale_compute.instance.ip_address}  >> ~/.ssh/known_hosts && ansible-playbook -i ansible/hosts ansible/playbook.yml"
-  }
-  triggers = {
-    "after" = local_file.ansible-hosts-file.id,
-  }
-}
 
 resource "exoscale_nic" "instance_network" {
   compute_id = exoscale_compute.instance.id
