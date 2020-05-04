@@ -39,8 +39,6 @@ resource "exoscale_compute" "instance" {
   }
 }
 
-
-
 resource "exoscale_nic" "instance_network" {
   compute_id = exoscale_compute.instance.id
   network_id = var.network_id

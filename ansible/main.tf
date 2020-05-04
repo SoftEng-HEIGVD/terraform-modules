@@ -1,12 +1,4 @@
-variable "ip_address" {}
-variable "secret_id" {}
-variable "role_id" {}
-variable "dependencies_list" {
-  default = []
-}
-variable "ansible_template_file" {}
-variable "ansible_host_path" {}
-variable "ansible_playbook_path" {}
+
 data "template_file" "ansible-hosts-template" {
   template = file(var.ansible_template_file)
   vars = {
