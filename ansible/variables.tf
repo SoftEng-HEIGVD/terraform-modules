@@ -1,6 +1,7 @@
 variable "ip_address" {}
 variable "secret_id" {}
 variable "role_id" {}
+variable "project_name" {}
 variable "dependencies_list" {
   default = []
 }

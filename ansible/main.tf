@@ -5,6 +5,7 @@ data "template_file" "ansible-hosts-template" {
     ip = var.ip_address
     secret_id= var.secret_id
     role_id= var.role_id
+    project_name=var.project_name
   }
   depends_on = [var.dependencies_list]
 }
