@@ -18,7 +18,7 @@ resource "local_file" "ansible-hosts-file" {
 
 resource "null_resource" "ansible" {
   provisioner "local-exec" {
-    command = "ssh-keyscan ${var.ip_address}  >> ~/.ssh/known_hosts && ansible-playbook -i ${var.ansible_host_path} ${var.ansible_playbook_path}"
+    command = "ssh-keyscan -p 8082 ${var.ip_address}  >> ~/.ssh/known_hosts && ansible-playbook -i ${var.ansible_host_path} ${var.ansible_playbook_path}"
   }
   triggers = {
     "after" = local_file.ansible-hosts-file.id,
