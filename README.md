@@ -22,6 +22,7 @@ With the informations about the input variables and outputs
 
 ## Modules list
  - exo-compute-module : specifies the creation of the `exoscale_compute` resource.
+ - exo-compute-template : specifies the creation of the `exoscale_compute` resource with a specified template.
  - exo-ssh-keypair-private: specifies the creation of the `exoscale_ssh_keypair` without providing the public key.
  - exo-ssh-keypair-public : specifies to generate an SSH keypair resource the creation of the `exoscale_ssh_keypair` with a given public key.
  - ansible: This module specifies the creation of the a `null_resource` that will execute locally ansible.
