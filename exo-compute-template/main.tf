@@ -1,6 +1,11 @@
 locals {
   zone = var.local_zone
 }
+
+data "exoscale_compute_template" "template" {
+  zone = local.zone
+  var = var.template_id
+}
 resource "exoscale_compute" "instance" {
   depends_on = [var.dependencies_list]
 
