@@ -1,5 +1,8 @@
-variable "instance_name" {
-  default = "default-instance-name"
+variable "instance_hostname" {
+  default = "default-instance-hostname"
+}
+variable "instance_dispalay_name" {
+  default = "default-instance-display-name"
 }
 
 variable "security_groups_list" {
