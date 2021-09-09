@@ -6,7 +6,8 @@ data "template_file" "ansible-hosts-template" {
     secret_id= var.secret_id
     role_id= var.role_id
     project_name=var.project_name
-    env=terraform.workspace
+    env_name=var.env_name
+    env_type=var.env_type
   }
   depends_on = [var.dependencies_list]
 }
